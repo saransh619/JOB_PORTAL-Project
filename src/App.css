@@ -1,0 +1,36 @@
+ ul{
+  list-style: none;
+  
+}
+.container ul li{
+  display: inline;
+  padding: 10px;
+  
+}
+.container{
+  background-color: black;
+  height: 100px;
+  text-align: center;
+}
+
+.fa-house{
+  margin: 4px;
+}
+
+.removeRecruiter{
+    background: red;
+    color: white;
+    padding: 8px;
+    border-radius: 16px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+@media all and (min-width: 992px) {
+	.navbar .dropdown-menu-end{ right:0; left: auto;  }
+	.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.3s; margin-top:0;  }
+	.navbar .nav-item:hover .nav-link{ color: #fff;  }
+	.navbar .dropdown-menu.fade-down{ top:80%; transform: rotateX(-75deg); transform-origin: 0% 0%; }
+	.navbar .dropdown-menu.fade-up{ top:180%;  }
+	.navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible; top:100%; transform: rotateX(0deg); }
+}
