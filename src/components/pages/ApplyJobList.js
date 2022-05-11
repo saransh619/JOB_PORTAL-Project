@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import jobportalAuthService from '../service/jobportal.auth.service';
 import '../../App.css';
+import instance from '../service/connection';
 
 const ApplyJobList = () => {
   const [data, setData] = useState([])
+
 
   useEffect(() => {
     jobportalAuthService.getAllApplyJobList().then(res => {
@@ -22,16 +24,7 @@ const ApplyJobList = () => {
       //   console.log("Error is", err);
       // })
 
-    }, [])
-
-    var resumeData = "/home/spacex/Desktop/springbootimage/";
-
-    // jobportalAuthService.downloadCV().then(res => {
-    //   // console.log("response data is", res.data);
-    //   resumeData = res.data;
-    // }).catch(err => {
-    //   console.log("Error is", err);
-    // })
+    }, []) 
     
     return (
 
@@ -66,8 +59,8 @@ const ApplyJobList = () => {
                             <td>{item.phone}</td>
                             <td>
                             {/* {item.resume} */}
-                              <a href={resumeData+item.resume} download>Download</a>
-                              {console.log(resumeData + item.resume)}
+                              <a href={`${instance()}downloadFile/${item.resume}`} download target='_saransh'>Download</a>
+                       
                             </td>
                             <td>{item.skills}</td>
                           </tr>

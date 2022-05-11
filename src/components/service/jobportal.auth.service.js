@@ -98,6 +98,14 @@ class AuthService {
         })
     }
 
+    rejectRecruiterPost(postId) {
+        return axios({
+            method: 'get',
+            url: instance() + `jobpost/rejectPost/${postId}`,
+            headers: authHeader()
+        })
+    }
+
     deleteRecruiterPost(postId) {
         return axios({
             method: 'delete',
@@ -106,11 +114,10 @@ class AuthService {
         })
     }
 
-    downloadCV() {
+    userNameExist() {
         return axios({
             method: 'get',
-            url: instance() + `downloadFile`,
-            // responseType: 'blob',
+            url: instance() + `usernameAlreadyExists`,
             headers: authHeader()
         })
     }

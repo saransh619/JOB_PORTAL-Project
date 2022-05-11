@@ -6,14 +6,15 @@ const EditJob = (props) => {
   console.log("myData is ", props);
   const location=useLocation();
   console.log("location is",location);
-  const {postId,companyName,jobTitle,description,postDate,lastDate}=location.state;
+  const {postId,companyName,jobTitle,description,postDate,lastDate,status}=location.state;
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     companyName,
     jobTitle,
     description,
     postDate,
-    lastDate
+    lastDate,
+    status
   });
   console.log(formValues);
   // console.log("data new",data);
@@ -28,7 +29,7 @@ const EditJob = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.put(instance() + `jobpost/${postId}`, formValues).then(res => {
-        // console.log("response data", res.data);
+        console.log("response data edit", res.data);
         navigate('/latestjob');  //redirect to latest job page
     }).catch(err => {
         console.log("Error is", err);
@@ -94,6 +95,14 @@ const EditJob = (props) => {
               name="lastDate"
             />
           </div>
+
+          {/* status hiddem  */}
+          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" hidden id="status" type="text" placeholder="Last Date"
+              value={formValues.status}
+              onChange={handleChange}
+              name="status"
+            />
+            
           <div className="flex items-center justify-between">
             <button className="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-auto" type="submit">
               UPDATE

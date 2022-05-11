@@ -54,10 +54,6 @@ const AddRecruiter = () => {
     if (!values.companyName) {
       errors.companyName = 'Company name is required';
     }
-    // for company logo validation 
-    // if (!values.companyLogo) {
-    //   errors.companyLogo = 'Company logo is required';
-    // }
     // for phone number validation 
     if (!values.phoneNumber) {
       errors.phoneNumber = 'Phone number is required';
