@@ -40,7 +40,7 @@ const JobApply = () => {
     if (Object.keys(errors).length === 0) {
     jobportalAuthService.addJobApply(data).then(res => {
       // console.log("response data", res.data);
-      navigate("/dashboard");
+      navigate("/userdashboard");
     }).catch(err => {
       console.log("error", err);
     });

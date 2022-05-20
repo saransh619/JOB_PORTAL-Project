@@ -43,7 +43,7 @@ const RegisterForm = () => {
          // toastify animation for registration success message
          toast.success("Registration Successful", {
           position: "top-right",
-          autoClose: 1000,
+          autoClose: 10,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,

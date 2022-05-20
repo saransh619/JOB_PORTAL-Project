@@ -12,7 +12,7 @@ const ApplyJobList = () => {
   useEffect(() => {
     jobportalAuthService.getAllApplyJobList().then(res => {
       // console.log(res);
-      setData(res.data);
+      setData(res.data.data);
     }
     ).catch(err => {
       console.log(err);
