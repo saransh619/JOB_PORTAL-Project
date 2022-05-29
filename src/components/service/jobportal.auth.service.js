@@ -122,5 +122,35 @@ class AuthService {
         })
     }
 
+    ForgetPassword(data){
+        console.log("axiosdata",data);
+        return axios({
+            method:"post",
+            url:instance() + `forget_password`,
+            data:data,
+            headers: authHeader()
+        })
+    }
+
+    ResetPostPassword(data,token){
+        console.log("axiosdata",data);
+        console.log("axiosdata",token);
+        return axios({
+            method:"post",
+            url:instance() + `reset_password/`+`?token=${token}`,
+            data:data,
+            headers: authHeader()
+        })
+    }
+
+    // SearchByJobLists(keyword){
+    //     console.log("keyword is",keyword);
+    //     return axios({
+    //         method:"get",
+    //         url:instance() + `jobpost/searchByJobsList/`+`?keyword=${keyword}`,
+    //         headers: authHeader()
+    //     })
+    // }
+
 }
 export default new AuthService();

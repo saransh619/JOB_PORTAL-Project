@@ -2,10 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import jobportalAuthService from '../service/jobportal.auth.service';
 import instance from '../service/connection';
 import '../../App.css';
+import { TailSpin } from 'react-loader-spinner';
+import '../../styles/Loader.css';
 const LatestJob = () => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false);
@@ -19,19 +21,21 @@ const LatestJob = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
     fetchData()
   }, [])
 
   const fetchData = () => {
+    setLoading(true);
     jobportalAuthService.getAllPosts().then(res => {
       // console.log('get all post response is ', res);
       setData(res.data);
       setLoading(false);
     }).catch(err => {
+      setLoading(false);
       console.log(`eeeeerrrrrroooorrrrrr is`, err);
     })
   }
+
   const handleDelete = (item) => {
     axios.delete(instance() + `jobpost/deletePost/${item.postId}`).then(res => {
       fetchData()
@@ -92,9 +96,19 @@ const LatestJob = () => {
   if (loading) {
     return (
       <>
-        <div className="loader" style={{ height: "80vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+        {/* <div className="loader" style={{ height: "80vh", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
           <img style={{ width: "250px", height: "250" }} src={loadingPic} alt="me" />
           <h1>Loading Jobs 😃 ❤️</h1>;
+        </div> */}
+
+        <div className='loader' >
+      <TailSpin
+                type="Circles"
+                color="green"
+                height={200}
+                width={100}
+                timeout={10} //3 secs
+            />
         </div>
       </>
     )
@@ -159,7 +173,7 @@ const LatestJob = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.filter((val) => {
+                  {data.filter((val) => {
                       if (searchTerm === '') {
                         return val;
                       } else if (val.jobTitle.toLowerCase().includes(searchTerm.toLowerCase())) {

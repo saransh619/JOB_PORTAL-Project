@@ -21,6 +21,8 @@ import { createContext, useReducer } from 'react';
 import { initialState, reducer } from './reducer/UseReducer';
 import RecruiterList from './components/pages/RecruiterList';
 import AddRecruiter from './components/pages/AddRecruiter';
+import ForgetPassword from './components/pages/ForgetPassword';
+import ResetPassword from './components/pages/ResetPassword';
 
 // 1. contextAPI 
 export const UserContext = createContext();
@@ -33,6 +35,8 @@ const Routing = () => {
       <Route path='/signup' element={<RegisterForm />}></Route>
       <Route path='/latestjob' element={<LatestJob />}></Route>
       <Route path='/logout' element={<Logout />}></Route>
+      <Route path='/forgetpassword' element={<ForgetPassword/>}></Route>
+      <Route path='/resetpassword' element={<ResetPassword/>}></Route>
 
       <Route element={<ProtectedRoutes />} >
         <Route path='/addjob' element={<AddJob />}></Route>
@@ -46,7 +50,7 @@ const Routing = () => {
         <Route path='/applyjoblist' element={<ApplyJobList />}></Route>
         <Route path='/editjob/:id' element={<EditJob />}></Route>
         {/* <Route path='/approvePost/:id' element={<RecruiterList />}></Route> */}
-        <Route path='/deletejob/:id' element={<LatestJob />}></Route>
+        <Route path='/deletejob/:id' element={<LatestJob />}></Route>  
       </Route>
       <Route path='*' element={<h1>Error Page Not Found</h1>}></Route>
     </Routes>

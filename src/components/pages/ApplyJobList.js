@@ -18,8 +18,8 @@ const ApplyJobList = () => {
       console.log(err);
     })
       // http.get('/getAllApplyJobList').then(res => {
-      //   // console.log("response data is", res.data);
-      //   setData(res.data);
+      //   // console.log("response data is", res.data.data);
+      //   setData(res.data.data);
       // }).catch(err => {
       //   console.log("Error is", err);
       // })

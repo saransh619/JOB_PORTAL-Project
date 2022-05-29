@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jobportalAuthService from "../service/jobportal.auth.service";
 import FormData from "form-data";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const JobApply = () => {
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
@@ -30,7 +32,6 @@ const JobApply = () => {
     }
     data.append('applyJob', JSON.stringify(applyJob));
     data.append('file', file);
-
     // for(let key in formValues){
     //   data.append(key,formValues[key]);
     // }
@@ -40,7 +41,20 @@ const JobApply = () => {
     if (Object.keys(errors).length === 0) {
     jobportalAuthService.addJobApply(data).then(res => {
       // console.log("response data", res.data);
-      navigate("/userdashboard");
+      setTimeout(() => {
+        navigate("/login");;
+      }, 2000);
+      
+       // toastify animation for lapply job message
+      toast.success("You have successfully applied for the job", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
     }).catch(err => {
       console.log("error", err);
     });
@@ -195,6 +209,8 @@ return (
           </p>
         </div>
       </div>
+      {/* toastify animation conatiner  */}
+      <ToastContainer />
     </>
   )
 }

@@ -26,6 +26,30 @@
     font-size: 13px;
 }
 
+.nav-item {
+  /* background-color: #dc923e; */
+}
+
+.nav-item .active{
+  text-decoration: underline 0.15em #ffffff!important;
+}
+
+.nav-item .active:hover{
+  /* text-decoration: underline 0.15em greenyellow; */
+}
+
+.nav-link {
+  /* position: relative; */
+  opacity: 0.75;
+}
+.nav-link.active{
+  opacity: 1;
+}
+.nav-link:hover {
+  opacity: 1;
+  text-decoration: underline 0.15em rgb(255, 255, 255);
+}
+
 @media all and (min-width: 992px) {
 	.navbar .dropdown-menu-end{ right:0; left: auto;  }
 	.navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.3s; margin-top:0;  }
